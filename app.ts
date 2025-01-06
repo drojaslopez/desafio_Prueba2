@@ -1,14 +1,13 @@
 import express from "express";
 
-//import userRoute from "./src/module/user/route";
+import userRoute from "./src/module/user/router";
 
 
-const port = process.env.PORT ?? 5000;
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.use(pathUser, userRoute);
+app.use("/user", userRoute);
 
 export default app;
