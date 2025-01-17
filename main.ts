@@ -1,5 +1,6 @@
 import app from "./src/config/app"
 import { sequelize } from "./src/config/sequelize";
+import process  from "node:process"
 
 const port = process.env.PORT ?? 5000;
 

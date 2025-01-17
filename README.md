@@ -1,4 +1,25 @@
-pnpm init
+Para iniciar el proyecto se debe instalar pnpm
+
+En powershell 
+```bash
+ $env:PNPM_VERSION = "10.0.0"; Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expression
+```
+o con npm 
+```bash
+npm install -g pnpm@latest-10
+```
+
+para iniciar el container de postgres para ejecutar se debe realizar con la siguiente linea
+
+```bash
+docker-compose up -d
+```
+
+
+
+
+
+
 
 pnpm i express jsonwebtoken
 pnpm i -D dotenv tsx typescript
@@ -35,7 +56,8 @@ psql -U postgres -d dbhito2
 
 
 
-
+```bash
+```
 
 pnpm up
 
