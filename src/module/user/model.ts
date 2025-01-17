@@ -1,14 +1,22 @@
-import { User } from "./interfaces";
-//import { pool } from "../../database/db";
+
+import {User} from "./schema"
 
 
 const findAll = async () => {
 
-  const { rows } = await pool.query("SELECT * FROM USERS");
-  return rows as User[];
+
+  try {
+    const users = await User.findAll();
+    return users;
+  } catch (error) {  
+    return   console.log(error);
+  }
+
+
+
 };
 
-const findOneById = async (id: string) => {
+/* const findOneById = async (id: string) => {
   // Datos parametrizados
   const query = {
     text: `
@@ -68,13 +76,13 @@ const remove = async (id: string) => {
   const { rows } = await pool.query(query);
 
   return rows[0] as User;
-};
+}; */
 
 export const UserModel = {
-  create,
-  findOneById,
+  //create,
+  //findOneById,
   findAll,
-  update,
-  remove
+  //update,
+  //remove
 };
 

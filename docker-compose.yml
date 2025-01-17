@@ -9,13 +9,13 @@ services:
     image: postgres:latest # Usa PostgreSQL versión 15
 
     # Nombre del contenedor
-    container_name: desafio4 # Nombre del contenedor
+    container_name: Prueba2 # Nombre del contenedor
 
     # Variables de entorno para configurar la base de datos
     environment:
       POSTGRES_USER: postgres # Usuario predeterminado de la base de datos
-      POSTGRES_PASSWORD: root # Contraseña del usuario
-      POSTGRES_DB: dbdesafio4 # Nombre de la base de datos que se creará
+      POSTGRES_PASSWORD: prueba # Contraseña del usuario
+      POSTGRES_DB: dbPrueba2 # Nombre de la base de datos que se creará
 
     # Puertos: mapea el puerto 5432 (dentro del contenedor) al 5434 (en tu máquina host)
     ports:
@@ -26,7 +26,20 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
         # ./postgres-data es una carpeta en tu máquina local
         # /var/lib/postgresql/data es donde PostgreSQL guarda sus datos
-
+        
+# mongodb:
+#   image: mongo:latest
+#   container_name: mongodb
+#   ports:
+#     - "27018:27017"
+#   environment:
+#     MONGO_INITDB_ROOT_USERNAME: root
+#     MONGO_INITDB_ROOT_PASSWORD: root
+#   volumes:
+#     - ./data:/data/db
+#   restart: unless-stopped # Esto reiniciará el contenedor en caso de fallo
 # Define volúmenes externos (puedes agregar nombres aquí si los necesitas)
 volumes:
   {}
+##
+
