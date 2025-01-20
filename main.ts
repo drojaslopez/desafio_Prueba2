@@ -1,8 +1,8 @@
 import app from "./src/config/app"
 import { sequelize } from "./src/config/sequelize";
-import process  from "node:process"
+import "dotenv/config"
 
-const port = process.env.PORT ?? 5000;
+const port = process.env.PORT ?? 3000;
 
 const main = ()=>{ 
   cargarDB();
@@ -13,7 +13,7 @@ const main = ()=>{
   try {
     sequelize.authenticate();
     sequelize.sync();
-
+    //sequelize.sync({ force: true });
     console.log('Conexión a la base de datos exitosa.');
   } catch (error) {
     console.error('Error al conectar a la base de datos:', error);

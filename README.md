@@ -17,7 +17,8 @@ docker-compose up -d
 
 
 
-
+git config --global user.email "drojaslopez.ing@gmail.com"
+git config --global user.name "drojaslopez -lenovo caro"
 
 
 

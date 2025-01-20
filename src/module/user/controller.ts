@@ -18,7 +18,7 @@ const getUser = async (req: Request, res: Response) => {
 
 const getUsers = async (req: Request, res: Response) => {
   try {
-    console.log("Entre")
+    console.warn("Entre getUsers")
     const user = await userService.getUsers();    
     if (!user) {
       res.status(404).json({ message: "User not found" });
@@ -32,19 +32,19 @@ const getUsers = async (req: Request, res: Response) => {
 };
 
 const createUser = async (req: Request, res: Response) => {
+  console.warn("Entre createUser")
   try {
     const { email, password, fullName, profile } = req.body;
-    console.log(req.body)
-
-    const user = await userService.createUser(
-      email,
-      password,
-      fullName,
-      profile
-    );
-    if (!user) {
-      res.status(20).json({ message: "User not found" });
+    const users = await userService.getUseByEmail(email);     
+    if (users) {
+      res.status(500).json({ message: "El usuario ya existe" });
     } else {
+      const user = await userService.createUser(
+        email,
+        password,
+        fullName,
+        profile
+      );
       res.status(201).json(user);
     }
   } catch (error) {

@@ -1,12 +1,17 @@
+import "dotenv/config";
 import { Sequelize } from "sequelize-typescript";
 import {Users} from "../module/user/schema";
 
-const DATABASE_URL = "postgres://postgres:prueba@localhost:5434/dbPrueba2";
+const DATABASE_URL = process.env.CONNECT_DB;
+
+if (!DATABASE_URL) {
+  throw new Error("DATABASE_URL not found");
+}
 
 export const sequelize = new Sequelize(DATABASE_URL, {
   dialect: "postgres",
   models: [Users],
-  logging: true, // false disable logging
+  logging: false, // false disable logging
 });
 
 
